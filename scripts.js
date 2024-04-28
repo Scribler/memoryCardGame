@@ -80,7 +80,7 @@ function createGameBoard (numberOfCardPairs) {
 // *** warning *** number of cards should be divisible by two.
 createGameBoard(3);
 
-
+console.log("This is a test");
 
 
 
