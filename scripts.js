@@ -62,3 +62,50 @@ function createGameBoard (numberOfCardPairs) {
 // Create's game board with given number of Cards
 // *** warning *** number of cards should be divisible by two.
 createGameBoard(3);
+
+
+// ODIN PROJECT STUFF
+
+// Book Directory
+
+function Book (title, author, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read; // have || haven't
+  this.info = function(){
+    return `${this.title} by ${this.author} has ${this.pages} pages and I ${this.read} read it.`;
+  }
+}
+
+const theScar = new Book ("The Scar", "China Mieville", 717, "have");
+const perdidoStreetStation = new Book ("Perdido Street Station", "China Mieville", 867, "have");
+
+console.log(theScar.author);
+console.log(theScar.info());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
