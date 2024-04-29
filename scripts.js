@@ -84,6 +84,11 @@ const perdidoStreetStation = new Book ("Perdido Street Station", "China Mieville
 console.log(theScar.author);
 console.log(theScar.info());
 
+Book.prototype.titleAuthor = function(){
+  return `${this.title} by ${this.author}.`
+}
+console.log(theScar.titleAuthor());
+console.log(theScar.valueOf());
 
 
 
@@ -91,19 +96,54 @@ console.log(theScar.info());
 
 
 
+//////
+
+function Person (name) {
+  this.name = name;
+}
+
+// the below function must be defined OUTSIDE of 'Person' with '.prototype'
+// or you won't be able to use it with another object prototype like **HERE** 
+
+Person.prototype.sayName = function() {
+  console.log(`Hello, I'm ${this.name}!`);
+}
+
+//////
 
 
 
 
 
+function Player(name, marker) {
+  this.name = name;
+  this.marker = marker;
+}
 
+Player.prototype.getMarker = function() {
+  console.log(`My marker is '${this.marker}'`);
+}
 
+Object.getPrototypeOf(Player.prototype); // returns Object.prototype
 
+// Now make 'Player' objects inherit from 'Person'
+//
+// **HERE**
+//
+// *NOTE* This should be done always BEFORE new objects are created with it otherwise there will be a performance hit.
+Object.setPrototypeOf(Player.prototype, Person.prototype);
+// object to modify  >> ^^                ^^  <<< object that 'Player' wants to inherit from
+Object.getPrototypeOf(Player.prototype); // returns Person.prototype
+// Sample Person
+const joe = new Person("Joe");
 
-
-
-
-
+// Sample Player
+const player1 = new Player("James", "X");
+const player2 = new Player("James the Second", "O");
+player1.sayName();
+player1.getMarker();
+player2.sayName();
+player2.getMarker();
 
 
 
