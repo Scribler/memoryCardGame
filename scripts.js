@@ -1,22 +1,5 @@
+// get card Area
 const cardArea = document.getElementById("cardArea");
-
-
-// function addCard () {
-//   // create div (body of card), and add 'card' class
-//   const newDiv = document.createElement("div");
-//   newDiv.className = "card";
-//
-//   // create image tag and add src and alt text
-//   const newImg = document.createElement("img");
-//   newImg.src = "assets/tartan.jpeg";
-//   newImg.alt = "tartan pattern";
-//
-//   // add img to div
-//   newDiv.appendChild(newImg);
-//
-//   // add div to DOM
-//   cardArea.appendChild(newDiv);
-// }
 
 // CARD CONSTRUCTOR
 function Card(name, cardNum) {
@@ -79,14 +62,3 @@ function createGameBoard (numberOfCardPairs) {
 // Create's game board with given number of Cards
 // *** warning *** number of cards should be divisible by two.
 createGameBoard(3);
-
-console.log("This is a test");
-
-
-
-
-
-
-
-
-
