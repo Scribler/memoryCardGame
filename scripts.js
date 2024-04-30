@@ -148,9 +148,8 @@ player2.getMarker();
 
 // Scratch work.  Following along with articles in odin project assignment.
 const x = [];
-// Below are two ways of exposing an object's prototype.
+// Below I am exposing an object's prototype.
 // It's a good way to see what an objects functions(methods?) are.
-console.log(x.__proto__); // old way 'depricated'
-console.log(Object.getPrototypeOf(x)); // new way 'proper way'
+console.log(Object.getPrototypeOf(x)); // x.__proto__  << this is the old depricated way
 
 
