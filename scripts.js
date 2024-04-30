@@ -146,6 +146,10 @@ player2.sayName();
 player2.getMarker();
 
 
-
-
+// Scratch work.  Following along with articles in odin project assignment.
+const x = {
+  test: "testing",
+};
+console.log(x.toString());
+console.log(x.test);
 
