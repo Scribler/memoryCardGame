@@ -147,9 +147,10 @@ player2.getMarker();
 
 
 // Scratch work.  Following along with articles in odin project assignment.
-const x = {
-  test: "testing",
-};
-console.log(x.toString());
-console.log(x.test);
+const x = [];
+// Below are two ways of exposing an object's prototype.
+// It's a good way to see what an objects functions(methods?) are.
+console.log(x.__proto__); // old way 'depricated'
+console.log(Object.getPrototypeOf(x)); // new way 'proper way'
+
 
