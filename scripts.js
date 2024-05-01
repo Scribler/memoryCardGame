@@ -70,58 +70,63 @@ createGameBoard(3);
 
 // ODIN PROJECT STUFF
 
-//////
+console.log("ODIN PROJECT STUFF START")
+console.log("*");
 
-function Person (name) {
+// **************** //
+//  *** PERSON *** 
+// **************** //
+
+// 'Person' Constructor followed by 'sayName' function afixed to the 'Person' prototype
+function Person(name) {
   this.name = name;
 }
-
-// the below function must be defined OUTSIDE of 'Person' with '.prototype'
-// or you won't be able to use it with another object prototype like **HERE** 
-
 Person.prototype.sayName = function() {
   console.log(`Hello, I'm ${this.name}!`);
 }
 
-//////
+// Initialize new 'Person' and utilize '.sayName'
+const joe = new Person("Joe Davids");
+joe.sayName(); // prints 'Hello I'm Joe Davids!'
 
+// **************** //
+//  *** PLAYER *** 
+// **************** //
+
+// Player constructor
 function Player(name, marker) {
   this.name = name;
-  this.marker = marker;
+  this.marker =  marker;
 }
 
-Player.prototype.getMarker = function() {
-  console.log(`My marker is '${this.marker}'`);
+// Initialize 'Player' and print contents
+const dale = new Player("Dale Jables", "O");
+console.log(`name: ${dale.name}, marker: ${dale.marker}`);
+
+// **************** //
+//  *** ENEMY *** 
+// **************** //
+function Enemy(name) {
+  this.name = name;
+  this.marker = '^';
 }
 
-Object.getPrototypeOf(Player.prototype); // returns Object.prototype
 
-// Now make 'Player' objects inherit from 'Person'
-//
-// **HERE**
-//
-// *NOTE* This should be done always BEFORE new objects are created with it otherwise there will be a performance hit.
-Object.setPrototypeOf(Player.prototype, Person.prototype);
-// object to modify  >> ^^                ^^  <<< object that 'Player' wants to inherit from
-Object.getPrototypeOf(Player.prototype); // returns Person.prototype
-console.log(Object.getPrototypeOf(Player.prototype)); // returns Person.prototype
-console.log(Object.getPrototypeOf(Player)); // this doesn't work. Must have '.prototype after it.'
-// Sample Person
-const joe = new Person("Joe");
+// **************** //
+//  *** MODIFYING CONSTRUCTORS AND ADDING PROTOTYPES *** 
+// **************** //
+// Object.setPrototype(Player.prototype, Person.prototype);
+Player.prototype = Person.prototype
+Enemy.prototype = Person.prototype;
+Enemy.prototype.sayName = function() {
+  console.log("HAHAHAHAHAHAHAHAHAHA!!!");
+}
 
-// Sample Player
-const player1 = new Player("James", "X");
-const player2 = new Player("James the Second", "O");
-player1.sayName();
-player1.getMarker();
-player2.sayName();
-player2.getMarker();
+// running functions
+const carl = new Player('carl', 'X');
+carl.sayName();
 
-
-// Scratch work.  Following along with articles in odin project assignment.
-const x = [];
-// Below I am exposing an object's prototype.
-// It's a good way to see what an objects properties and methods are.
-console.log(Object.getPrototypeOf(x)); // x.__proto__  << this is the old depricated way
+console.log("*");
+console.log("ODIN PROJECT STUFF END")
 
 
