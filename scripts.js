@@ -64,37 +64,11 @@ function createGameBoard (numberOfCardPairs) {
 createGameBoard(3);
 
 
+
+
+
+
 // ODIN PROJECT STUFF
-
-// Book Directory
-
-function Book (title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read; // have || haven't
-  this.info = function(){
-    return `${this.title} by ${this.author} has ${this.pages} pages and I ${this.read} read it.`;
-  }
-}
-
-const theScar = new Book ("The Scar", "China Mieville", 717, "have");
-const perdidoStreetStation = new Book ("Perdido Street Station", "China Mieville", 867, "have");
-
-console.log(theScar.author);
-console.log(theScar.info());
-
-Book.prototype.titleAuthor = function(){
-  return `${this.title} by ${this.author}.`
-}
-console.log(theScar.titleAuthor());
-console.log(theScar.valueOf());
-
-
-
-
-
-
 
 //////
 
@@ -110,10 +84,6 @@ Person.prototype.sayName = function() {
 }
 
 //////
-
-
-
-
 
 function Player(name, marker) {
   this.name = name;
@@ -134,6 +104,8 @@ Object.getPrototypeOf(Player.prototype); // returns Object.prototype
 Object.setPrototypeOf(Player.prototype, Person.prototype);
 // object to modify  >> ^^                ^^  <<< object that 'Player' wants to inherit from
 Object.getPrototypeOf(Player.prototype); // returns Person.prototype
+console.log(Object.getPrototypeOf(Player.prototype)); // returns Person.prototype
+console.log(Object.getPrototypeOf(Player)); // this doesn't work. Must have '.prototype after it.'
 // Sample Person
 const joe = new Person("Joe");
 
