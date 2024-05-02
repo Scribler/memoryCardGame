@@ -82,8 +82,9 @@ function Hero(name, level) {
 }
 
 
-// *** WARRIOR CLASS *** //
-// Constructor
+// *** Class CONSTRUCTORS *** //
+
+// Warrior
 function Warrior(name, level, weapon) {
   // chain constructor with call
   Hero.call(this, name, level);
@@ -92,48 +93,42 @@ function Warrior(name, level, weapon) {
   this.weapon = weapon;
 }
 
-// Link Hero prototype
-Object.setPrototypeOf(Warrior.prototype, Hero.prototype);
-
-// Warrior methods
-Warrior.prototype.attack = function() {
-  console.log(`${this.name} attackes with the ${this.weapon}.`);
-}
-
-
-
-// *** HEALER CLASS *** //
-// Healer constructor
+// Healer
 function Healer(name, level, spell) {
   Hero.call(this, name, level);
   
   this.spell = spell;
 }
 
-// Link Hero prototype
-Object.setPrototypeOf(Healer.prototype, Hero.prototype);
-
-// Healer methods
-Healer.prototype.heal = function () {
-  console.log(`${this.name} casts ${this.spell}.`);
-}
-
-
-// *** WIZARD CLASS *** //
-// Wizard Constructor
+// Wizard
 function Wizard(name, level, spell) {
   Hero.call(this, name, level);
   
   this.spell = spell;
 }
 
-// Link Hero prototype
-Object.setPrototypeOf(Wizard.prototype, Hero.prototype);
+// *** Class METHODS *** //
+
+// Warrior
+Warrior.prototype.attack = function() {
+  console.log(`${this.name} attackes with the ${this.weapon}.`);
+}
+
+// Healer 
+Healer.prototype.heal = function () {
+  console.log(`${this.name} casts ${this.spell}.`);
+}
 
 // Wizard methods
 Wizard.prototype.fireball= function () {
   console.log(`${this.name} casts ${this.spell}`);
 }
+
+// *** Link prototypes and add prototype methods *** //
+Object.setPrototypeOf(Warrior.prototype, Hero.prototype);
+Object.setPrototypeOf(Healer.prototype, Hero.prototype);
+Object.setPrototypeOf(Wizard.prototype, Hero.prototype);
+
 
 // ********* //
 //
