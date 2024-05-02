@@ -81,18 +81,52 @@ function Hero(name, level) {
   return `${this.name} says hello.`;
 }
 
+
+// WARRIOR CLASS
+// Constructor
+function Warrior(name, level, weapon) {
+  // chain constructor with call
+  Hero.call(this, name, level);
+
+  // add a new weapon
+  this.weapon = weapon;
+}
+// Warrior methods
+Warrior.prototype.attack = function() {
+  console.log(`${this.name} attackes with the ${this.weapon}.`);
+}
+
+
+
+// HEALER
+// Healer constructor
+function Healer(name, level, spell) {
+  Hero.call(this, name, level);
+  
+  this.spell = spell;
+}
+// Healer methods
+Healer.prototype.heal = function () {
+  console.log(`${this.name} casts ${this.spell}.`);
+}
+
+
 // Wizard Class
-
-
-// Warior Class
-
-
-
+// Wizard Constructor
+function Wizard(name, level, spell) {
+  Hero.call(this, name, level);
+  
+  this.spell = spell;
+}
+// Wizard methods
+Wizard.prototype.spell = function () {
+  console.log(`${this.name} casts ${this.spell}.`);
+}
 
 // testing INITIATING OBJECTS
-const dale = new Hero("Dale Wiggins", 1);
+const hero1 = new Hero("Dale Wiggins", 1);
 // testing running
-console.log(dale.greet());
+console.log(hero1.greet());
 
 
 
