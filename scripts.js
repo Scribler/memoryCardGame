@@ -76,8 +76,6 @@ console.log("*");
 // **************** //
 //  *** PERSON *** 
 // **************** //
-
-// 'Person' Constructor followed by 'sayName' function afixed to the 'Person' prototype
 function Person(name) {
   this.name = name;
 }
@@ -85,23 +83,13 @@ Person.prototype.sayName = function() {
   console.log(`Hello, I'm ${this.name}!`);
 }
 
-// Initialize new 'Person' and utilize '.sayName'
-const joe = new Person("Joe Davids");
-joe.sayName(); // prints 'Hello I'm Joe Davids!'
-
 // **************** //
 //  *** PLAYER *** 
 // **************** //
-
-// Player constructor
 function Player(name, marker) {
   this.name = name;
   this.marker =  marker;
 }
-
-// Initialize 'Player' and print contents
-const dale = new Player("Dale Jables", "O");
-console.log(`name: ${dale.name}, marker: ${dale.marker}`);
 
 // **************** //
 //  *** ENEMY *** 
@@ -115,9 +103,10 @@ function Enemy(name) {
 // **************** //
 //  *** MODIFYING CONSTRUCTORS AND ADDING PROTOTYPES *** 
 // **************** //
-// Object.setPrototype(Player.prototype, Person.prototype);
-Player.prototype = Person.prototype
-Enemy.prototype = Person.prototype;
+Object.setPrototypeOf(Player.prototype, Person.prototype);
+Object.setPrototypeOf(Enemy.prototype, Person.prototype);
+// Player.prototype = Person.prototype
+// Enemy.prototype = Person.prototype;
 Enemy.prototype.sayName = function() {
   console.log("HAHAHAHAHAHAHAHAHAHA!!!");
 }
@@ -125,6 +114,9 @@ Enemy.prototype.sayName = function() {
 // running functions
 const carl = new Player('carl', 'X');
 carl.sayName();
+const dale = new Enemy('Dale', '0');
+console.log(dale.name);
+dale.sayName();
 
 console.log("*");
 console.log("ODIN PROJECT STUFF END")
