@@ -70,4 +70,45 @@ createGameBoard(3);
 
 // ODIN PROJECT STUFF
 
-// characters with classes
+// New hero constructor
+function Hero(name, level) {
+  this.name = name;
+  this.level = level;
+}
+
+// method's for hero prototype
+ Hero.prototype.greet = function () {
+  return `${this.name} says hello.`;
+}
+
+// Wizard Class
+
+
+// Warior Class
+
+
+
+
+// testing INITIATING OBJECTS
+const dale = new Hero("Dale Wiggins", 1);
+// testing running
+console.log(dale.greet());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
