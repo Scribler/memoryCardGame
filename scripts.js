@@ -78,11 +78,11 @@ function Hero(name, level) {
 
 // method's for hero prototype
  Hero.prototype.greet = function () {
-  return `${this.name} says hello.`;
+  console.log(`${this.name} says hello.`);
 }
 
 
-// WARRIOR CLASS
+// *** WARRIOR CLASS *** //
 // Constructor
 function Warrior(name, level, weapon) {
   // chain constructor with call
@@ -91,6 +91,10 @@ function Warrior(name, level, weapon) {
   // add a new weapon
   this.weapon = weapon;
 }
+
+// Link Hero prototype
+Object.setPrototypeOf(Warrior.prototype, Hero.prototype);
+
 // Warrior methods
 Warrior.prototype.attack = function() {
   console.log(`${this.name} attackes with the ${this.weapon}.`);
@@ -98,51 +102,62 @@ Warrior.prototype.attack = function() {
 
 
 
-// HEALER
+// *** HEALER CLASS *** //
 // Healer constructor
 function Healer(name, level, spell) {
   Hero.call(this, name, level);
   
   this.spell = spell;
 }
+
+// Link Hero prototype
+Object.setPrototypeOf(Healer.prototype, Hero.prototype);
+
 // Healer methods
 Healer.prototype.heal = function () {
   console.log(`${this.name} casts ${this.spell}.`);
 }
 
 
-// Wizard Class
+// *** WIZARD CLASS *** //
 // Wizard Constructor
 function Wizard(name, level, spell) {
   Hero.call(this, name, level);
   
   this.spell = spell;
 }
+
+// Link Hero prototype
+Object.setPrototypeOf(Wizard.prototype, Hero.prototype);
+
 // Wizard methods
-Wizard.prototype.spell = function () {
-  console.log(`${this.name} casts ${this.spell}.`);
+Wizard.prototype.fireball= function () {
+  console.log(`${this.name} casts ${this.spell}`);
 }
 
+// ********* //
+//
 // testing INITIATING OBJECTS
-const hero1 = new Hero("Dale Wiggins", 1);
+const Hero1 = new Warrior('Bjorn', 1, 'axe');
+const Hero2 = new Healer('Kanin', 1, 'cure');
+const Hero3 = new Wizard('Kanin', 1, 'fire ball');
 // testing running
-console.log(hero1.greet());
+console.log(Hero1);
+console.log("*");
 
+// Hero1 actions
+Hero1.greet();
+Hero1.attack();
+console.log("*");
 
+// Hero2 actions
+Hero2.greet();
+Hero2.heal();
+console.log("*");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Hero3 actions
+Hero3.greet();
+Hero3.fireball();
+console.log("*");
+//
+// ********* //
