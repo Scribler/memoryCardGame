@@ -156,3 +156,51 @@ Hero3.fireball();
 console.log("*");
 //
 // ********* //
+
+function Car(brand, name, year) {
+  this.brand = brand;
+  this.name = name;
+  this.year = year;
+}
+
+Car.prototype.printStats = function() {
+  if (this.type == undefined) {
+    this.type = "Car";
+  }
+  console.log(`This ${this.type} is a ${this.year} ${this.brand} ${this.name}`);
+  // console.log(${this.type});
+}
+
+
+function SportsCar(brand, name, year) {
+  Car.call(this, brand, name, year);
+  this.type = "Sports Car";
+}
+
+function Sedan(brand, name, year) {
+  Car.call(this, brand, name, year);
+  this.type = "Sedan";
+}
+
+Object.setPrototypeOf(SportsCar.prototype, Car.prototype);
+Object.setPrototypeOf(Sedan.prototype, Car.prototype);
+
+const Dart = new Car("Dodge", "Dart", 1977);
+Dart.printStats();
+const Corvet = new SportsCar("Ford", "Corvette", 1987);
+Corvet.printStats();
+const Taurus = new Sedan("Ford", "Taurus", 1995);
+Taurus.printStats();
+
+
+
+
+
+
+
+
+
+
+
+
+
