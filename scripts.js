@@ -157,6 +157,11 @@ console.log("*");
 //
 // ********* //
 
+
+// My own CONSTRUCTORS
+
+
+
 function Car(brand, name, year) {
   this.brand = brand;
   this.name = name;
@@ -192,12 +197,20 @@ Corvet.printStats();
 const Taurus = new Sedan("Ford", "Taurus", 1995);
 Taurus.printStats();
 
+let animal = {
+  eats: true
+}
+let rabbit = {
+  jumps: true
+}
+
+rabbit.__proto__ = animal;
 
 
-
-
-
-
+console.log(`animal eats? : ${animal.eats}`);
+console.log(`animal jumps? : ${animal.jumps}`);
+console.log(`rabbit eats? : ${rabbit.eats}`);
+console.log(`rabbit jumps? : ${rabbit.jumps}`);
 
 
 
