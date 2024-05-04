@@ -160,60 +160,32 @@ console.log("*");
 
 // My own CONSTRUCTORS
 
+console.log("***************************");
+console.log("*");
+console.log("My Testing Area");
+console.log("*");
 
 
-function Car(brand, name, year) {
-  this.brand = brand;
-  this.name = name;
-  this.year = year;
-}
+let user = {
+  name: "John",
+  surname: "Smith",
 
-Car.prototype.printStats = function() {
-  if (this.type == undefined) {
-    this.type = "Car";
+  set fullName(value) {
+    [this.name, this.surname] = value.split(" ");
+  },
+
+  get fullName() {
+    return `${this.name} ${this.surname}`;
   }
-  console.log(`This ${this.type} is a ${this.year} ${this.brand} ${this.name}`);
-  // console.log(${this.type});
 }
 
-
-function SportsCar(brand, name, year) {
-  Car.call(this, brand, name, year);
-  this.type = "Sports Car";
+let admin = {
+  __proto__: user,
+  isAdmin: true
 }
 
-function Sedan(brand, name, year) {
-  Car.call(this, brand, name, year);
-  this.type = "Sedan";
-}
-
-Object.setPrototypeOf(SportsCar.prototype, Car.prototype);
-Object.setPrototypeOf(Sedan.prototype, Car.prototype);
-
-const Dart = new Car("Dodge", "Dart", 1977);
-Dart.printStats();
-const Corvet = new SportsCar("Ford", "Corvette", 1987);
-Corvet.printStats();
-const Taurus = new Sedan("Ford", "Taurus", 1995);
-Taurus.printStats();
-
-let animal = {
-  eats: true
-}
-let rabbit = {
-  jumps: true
-}
-
-rabbit.__proto__ = animal;
-
-
-console.log(`animal eats? : ${animal.eats}`);
-console.log(`animal jumps? : ${animal.jumps}`);
-console.log(`rabbit eats? : ${rabbit.eats}`);
-console.log(`rabbit jumps? : ${rabbit.jumps}`);
-
-
-
-
-
+admin.fullName = "Tony Smith";
+console.log(admin.fullName);
+console.log(admin.name);
+console.log(admin.surname);
 
