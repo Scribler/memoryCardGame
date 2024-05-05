@@ -189,3 +189,25 @@ console.log(admin.fullName);
 console.log(admin.name);
 console.log(admin.surname);
 
+let animal = {
+  walk() {
+    if (!this.isSleeping) {
+      console.log("walking");
+    }
+  },
+  sleep() {
+    this.isSleeping = true;
+  }
+}
+
+let rabbit = {
+  name: "White Rabbit",
+  __proto__: animal
+}
+
+console.log(rabbit.isSleeping);
+rabbit.sleep();
+console.log(rabbit.isSleeping);
+console.log(animal.isSleeping);
+animal.sleep();
+console.log(animal.isSleeping);
