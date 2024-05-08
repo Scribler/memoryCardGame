@@ -70,144 +70,98 @@ createGameBoard(3);
 
 // ODIN PROJECT STUFF
 
-// New hero constructor
-function Hero(name, level) {
-  this.name = name;
-  this.level = level;
-}
-
-// method's for hero prototype
- Hero.prototype.greet = function () {
-  console.log(`${this.name} says hello.`);
-}
-
-
-// *** Class CONSTRUCTORS *** //
-
-// Warrior
-function Warrior(name, level, weapon) {
-  // chain constructor with call
-  Hero.call(this, name, level);
-
-  // add a new weapon
-  this.weapon = weapon;
-}
-
-// Healer
-function Healer(name, level, spell) {
-  Hero.call(this, name, level);
-  
-  this.spell = spell;
-}
-
-// Wizard
-function Wizard(name, level, spell) {
-  Hero.call(this, name, level);
-  
-  this.spell = spell;
-}
-
-// *** Class METHODS *** //
-
-// Warrior
-Warrior.prototype.attack = function() {
-  console.log(`${this.name} attackes with the ${this.weapon}.`);
-}
-
-// Healer 
-Healer.prototype.heal = function () {
-  console.log(`${this.name} casts ${this.spell}.`);
-}
-
-// Wizard methods
-Wizard.prototype.fireball= function () {
-  console.log(`${this.name} casts ${this.spell}`);
-}
-
-// *** Link prototypes and add prototype methods *** //
-Object.setPrototypeOf(Warrior.prototype, Hero.prototype);
-Object.setPrototypeOf(Healer.prototype, Hero.prototype);
-Object.setPrototypeOf(Wizard.prototype, Hero.prototype);
-
-
-// ********* //
-//
-// testing INITIATING OBJECTS
-const Hero1 = new Warrior('Bjorn', 1, 'axe');
-const Hero2 = new Healer('Kanin', 1, 'cure');
-const Hero3 = new Wizard('Kanin', 1, 'fire ball');
-// testing running
-console.log(Hero1);
-console.log("*");
-
-// Hero1 actions
-Hero1.greet();
-Hero1.attack();
-console.log("*");
-
-// Hero2 actions
-Hero2.greet();
-Hero2.heal();
-console.log("*");
-
-// Hero3 actions
-Hero3.greet();
-Hero3.fireball();
-console.log("*");
-//
-// ********* //
-
-
-// My own CONSTRUCTORS
-
 console.log("***************************");
 console.log("*");
 console.log("My Testing Area");
 console.log("*");
 
+// for(let prop in rabbit) {
+//   // this line checks if the property is part of 'rabbit' every loop
+//   let isRabbit = rabbit.hasOwnProperty(prop);
+//   // if 'isRabbit' evaluates to 'true'
+//   if(isRabbit) {
+//     console.log(`${prop} IS a property of "rabbit".`);
+//   // if 'isRabbit' evaluates to 'false'
+//   } else {
+//     console.log(`${prop} is NOT property of rabbit.`);
+//   }
+// }
+// Level 0 - Vehicle Constructor
+function Vehicle(brand, model) {
+  this.brand = brand;
+  this.model = model;
+}
+Vehicle.prototype.showBrand = function() {
+  console.log(this.brand);
+}
+Vehicle.prototype.showInfo = function() {
+  console.log(`The ${this.constructor.name} is a ${this.brand} ${this.model} ${this.type}`);
+}
 
-let user = {
-  name: "John",
-  surname: "Smith",
+// Level 1 - Car Constructor
+function Car(brand, model, type) {
+  Vehicle.call(this, brand, model)
+  this.type = type;
+}
+Object.setPrototypeOf(Car.prototype, Vehicle.prototype);
+Car.prototype.constructor = Car;
 
-  set fullName(value) {
-    [this.name, this.surname] = value.split(" ");
-  },
+// Level 1 - Motorcycle Constructor
+function Motorcycle(brand, model, type) {
+  Vehicle.call(this, brand, model)
+  this.type = type;
+}
+Object.setPrototypeOf(Motorcycle.prototype, Vehicle.prototype);
+Motorcycle.prototype.constructor = Motorcycle;
 
-  get fullName() {
-    return `${this.name} ${this.surname}`;
+// Building Objects
+
+//build Car
+const mustang = new Car("Ford", "Mustang", "Sports Car");
+mustang.showInfo();
+
+// testing
+
+
+//
+for(let property in mustang) {
+  const isProperty = mustang.hasOwnProperty(property);
+  if(isProperty) {
+    console.log(`${property}: IS a property of 'mustang'`);
+  } else {
+    console.log(`${property}: is NOT a property of 'mustang'`)
+  }
+}
+console.log("**");
+console.log("**");
+
+//build Motorcycle
+const gixxer = new Motorcycle("Suzuki", "GSXR-600", "Sports Bike");
+gixxer.showInfo();
+console.log("**");
+
+// test Motorcycle
+for(let property in gixxer) {
+  const isProperty = gixxer.hasOwnProperty(property);
+  if(isProperty) {
+    console.log(`${property}: IS a property of 'gixxer'`);
+  } else {
+    console.log(`${property}: is NOT a property of 'gixxer'`)
   }
 }
 
-let admin = {
-  __proto__: user,
-  isAdmin: true
-}
+console.log("**");
+console.log("**");
 
-admin.fullName = "Tony Smith";
-console.log(admin.fullName);
-console.log(admin.name);
-console.log(admin.surname);
+const myArray = [mustang, gixxer];
 
-let animal = {
-  walk() {
-    if (!this.isSleeping) {
-      console.log("walking");
-    }
-  },
-  sleep() {
-    this.isSleeping = true;
+for(let arrayItem in myArray) {
+  const myObject = myArray[arrayItem];
+  // looping through properties of each object
+  for(let prop in myObject) {
+    const isProperty = myObject.hasOwnProperty(prop);
+    console.log(`${prop}: is property of ${myObject.constructor.name}:: ${isProperty}`);
   }
 }
 
-let rabbit = {
-  name: "White Rabbit",
-  __proto__: animal
-}
 
-console.log(rabbit.isSleeping);
-rabbit.sleep();
-console.log(rabbit.isSleeping);
-console.log(animal.isSleeping);
-animal.sleep();
-console.log(animal.isSleeping);
