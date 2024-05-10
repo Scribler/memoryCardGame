@@ -87,9 +87,18 @@ console.log("*");
 //   }
 // }
 // Level 0 - Vehicle Constructor
-function Vehicle(brand, model) {
+function Vehicle(brand, model, objName) {
   this.brand = brand;
   this.model = model;
+  this.objName = objName;
+  this.fillUp = function() {
+    this.gas = true;
+    console.log(`gas = ${this.gas}`);
+  }
+  this.drive = function() {
+    this.gas = false;
+    console.log(`gas = ${this.gas}`);
+  }
 }
 Vehicle.prototype.showBrand = function() {
   console.log(this.brand);
@@ -99,16 +108,16 @@ Vehicle.prototype.showInfo = function() {
 }
 
 // Level 1 - Car Constructor
-function Car(brand, model, type) {
-  Vehicle.call(this, brand, model)
+function Car(brand, model, type, objName) {
+  Vehicle.call(this, brand, model, objName);
   this.type = type;
 }
 Object.setPrototypeOf(Car.prototype, Vehicle.prototype);
 Car.prototype.constructor = Car;
 
 // Level 1 - Motorcycle Constructor
-function Motorcycle(brand, model, type) {
-  Vehicle.call(this, brand, model)
+function Motorcycle(brand, model, type, objName) {
+  Vehicle.call(this, brand, model, objName)
   this.type = type;
 }
 Object.setPrototypeOf(Motorcycle.prototype, Vehicle.prototype);
@@ -117,7 +126,7 @@ Motorcycle.prototype.constructor = Motorcycle;
 // Building Objects
 
 //build Car
-const mustang = new Car("Ford", "Mustang", "Sports Car");
+const mustang = new Car("Ford", "Mustang", "Sports Car", "mustang");
 mustang.showInfo();
 
 // testing
@@ -127,9 +136,9 @@ mustang.showInfo();
 for(let property in mustang) {
   const isProperty = mustang.hasOwnProperty(property);
   if(isProperty) {
-    console.log(`${property}: IS a property of 'mustang'`);
+    console.log(`${property}: IS a property of ${mustang.objName}`);
   } else {
-    console.log(`${property}: is NOT a property of 'mustang'`)
+    console.log(`${property}: is NOT a property of ${mustang.objName}`);
   }
 }
 console.log("**");
@@ -164,4 +173,5 @@ for(let arrayItem in myArray) {
   }
 }
 
-
+gixxer.fillUp();
+gixxer.drive();
