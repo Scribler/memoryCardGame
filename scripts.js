@@ -175,3 +175,16 @@ for(let arrayItem in myArray) {
 
 gixxer.fillUp();
 gixxer.drive();
+
+function sum(a, b) {
+  console.log(this === window);
+  console.log(`myNumber is: ${this.myNumber}`);
+  this.myNumber = 20;
+  console.log(`myNumber is: ${window.myNumber}`);
+  return a + b;
+}
+
+console.log(sum(1, 2));
+console.log(window.myNumber);
+myNumber = 2;
+console.log(sum(3,4));
