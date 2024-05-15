@@ -71,15 +71,15 @@ createGameBoard(3);
 // ODIN PROJECT STUFF
 
 console.log("***************************");
-console.log("*");
 console.log("My Testing Area");
-console.log("*");
+console.log("***************************");
 
-const outerArray = ['outer1', 'outer2'];
-
+console.log("**");
+console.log("Adding Machine");
+console.log("**");
 const adder = {
   addingMachine: function(){
-    console.log(`Adding machine says: ${this.numberA + this.numberB}`);
+    console.log(`Added: ${this.numberA + this.numberB}`);
   }
 }
 
@@ -93,20 +93,38 @@ const numbers = {
   numberA: 5,
   numberB: 10,
   sum: function() {
-    console.log(`"this === numbers" within sum function: ${this === numbers}`); // => true
+    console.log(`"this === numbers" => ${this === numbers}`); // => true
 
     function calculate() {
-      console.log(`"this === numbers" within calc function within sum function: ${this === numbers}`); // => true
+      console.log(`"this === numbers" => ${this === numbers}`); // => true
     }
     // use '.call()' method to modify the context
-    return calculate.call(this);
-  }
+    // return calculate.call(this);
+    return calculate();
+  },
+  thumb: function() {
+    console.log(`thumb's this => ${this === numbers}`);// should be true;
+    
+    function equalToWindow() {
+      'use strict'; // makes 'this === window' evaluate to false
+      console.log(`is window? => ${this === window}`);// true unless strict(if strict this === undefined)
+      console.log(`is undefined? => ${this === undefined}`);// true if NOT strict
+    }
+
+    return equalToWindow();
+  },
 };
 
 numbers.sum(); // => 15
+numbers.thumb(); // => 15
 adder.addingMachine.call(numbers); // should be => 'Adding machine says: 15';
 adder.addingMachine.call(numGroup2); // should be => 'Adding machine says: 55';
 
+
+// Person Objects
+console.log("**");
+console.log("Person Objects");
+console.log("**");
 const PersonBuilder = function(firstName, lastName, age, job){
   this.firstName = firstName;
   this.lastName = lastName;
@@ -121,6 +139,9 @@ const manipulators = {
   fullName: function(){
     return `Full Name: ${this.firstName} ${this.lastName}`;
   },
+  firstName: function() {
+    return `First Name: ${this.firstName}`;
+  }
 }
 
 const person1 = new PersonBuilder('Dale', 'Anderson', 25, 'Brick Layer');
@@ -128,11 +149,7 @@ const person2 = new PersonBuilder('Scott', 'Bergundy', 53, 'Roofer');
 const person3 = new PersonBuilder('Garret', 'Binns', 29, 'Engineer');
 const person4 = new PersonBuilder('Sammy', 'Shale', 32, 'Doctor');
 
-console.log(manipulators.allInfo.call(person1));
-console.log(manipulators.fullName.call(person1));
-console.log(manipulators.allInfo.call(person2));
-console.log(manipulators.allInfo.call(person3));
-console.log(manipulators.allInfo.call(person4));
+console.log(manipulators.firstName.call(person1));
 
 
 
