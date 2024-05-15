@@ -77,6 +77,17 @@ console.log("*");
 
 const outerArray = ['outer1', 'outer2'];
 
+const adder = {
+  addingMachine: function(){
+    console.log(`Adding machine says: ${this.numberA + this.numberB}`);
+  }
+}
+
+const numGroup2 = {
+  numberA: 22,
+  numberB: 33
+}
+
 const numbers = {
   innerArray: ['inner1', 'inner2'],
   numberA: 5,
@@ -93,3 +104,49 @@ const numbers = {
 };
 
 numbers.sum(); // => 15
+adder.addingMachine.call(numbers); // should be => 'Adding machine says: 15';
+adder.addingMachine.call(numGroup2); // should be => 'Adding machine says: 55';
+
+const PersonBuilder = function(firstName, lastName, age, job){
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.age = age;
+  this.job = job;
+}
+
+const manipulators = {
+  allInfo: function(){
+    return `${this.firstName} ${this.lastName} is ${this.age} years old and is a ${this.job}`;
+  },
+  fullName: function(){
+    return `Full Name: ${this.firstName} ${this.lastName}`;
+  },
+}
+
+const person1 = new PersonBuilder('Dale', 'Anderson', 25, 'Brick Layer');
+const person2 = new PersonBuilder('Scott', 'Bergundy', 53, 'Roofer');
+const person3 = new PersonBuilder('Garret', 'Binns', 29, 'Engineer');
+const person4 = new PersonBuilder('Sammy', 'Shale', 32, 'Doctor');
+
+console.log(manipulators.allInfo.call(person1));
+console.log(manipulators.fullName.call(person1));
+console.log(manipulators.allInfo.call(person2));
+console.log(manipulators.allInfo.call(person3));
+console.log(manipulators.allInfo.call(person4));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
