@@ -94,29 +94,15 @@ const numbers = {
   numberB: 10,
   sum: function() {
     console.log(`"this === numbers" => ${this === numbers}`); // => true
-
-    function calculate() {
+    // Using the arrow function before lets this equal numbers.  A regular function would make 'this'equal 'window'.
+    const calculate = () => {
       console.log(`"this === numbers" => ${this === numbers}`); // => true
     }
-    // use '.call()' method to modify the context
-    // return calculate.call(this);
     return calculate();
-  },
-  thumb: function() {
-    console.log(`thumb's this => ${this === numbers}`);// should be true;
-    
-    function equalToWindow() {
-      'use strict'; // makes 'this === window' evaluate to false
-      console.log(`is window? => ${this === window}`);// true unless strict(if strict this === undefined)
-      console.log(`is undefined? => ${this === undefined}`);// true if NOT strict
-    }
-
-    return equalToWindow();
   },
 };
 
 numbers.sum(); // => 15
-numbers.thumb(); // => 15
 adder.addingMachine.call(numbers); // should be => 'Adding machine says: 15';
 adder.addingMachine.call(numGroup2); // should be => 'Adding machine says: 55';
 
