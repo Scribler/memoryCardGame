@@ -137,13 +137,22 @@ const person4 = new PersonBuilder('Sammy', 'Shale', 32, 'Doctor');
 
 console.log(manipulators.firstName.call(person1));
 
-console.log(*******);
+console.log("*******");
 
 // may 17 2024 start here building calc object from article
 const calc = {
   num: 0,
-
+  increment() {
+    console.log(`"this === calc" ?: ${this === calc}`);
+    this.num += 1;
+    return this.num
+  }
 }
+
+console.log(calc.increment());
+console.log(calc.increment());
+console.log(calc.increment());
+console.log(calc.increment());
 
 
 
