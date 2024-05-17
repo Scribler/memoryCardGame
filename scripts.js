@@ -137,6 +137,13 @@ const person4 = new PersonBuilder('Sammy', 'Shale', 32, 'Doctor');
 
 console.log(manipulators.firstName.call(person1));
 
+console.log(*******);
+
+// may 17 2024 start here building calc object from article
+const calc = {
+  num: 0,
+
+}
 
 
 
