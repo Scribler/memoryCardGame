@@ -76,14 +76,18 @@ console.log("***************************");
 
 
 function Runner(name) {
-  console.log(`Within runner function => this istanceof Rabbit: ${this instanceof Rabbit}`); // => true
+  console.log(`Within RUNNER function => this istanceof Rabbit: ${this instanceof Rabbit}`); // => true
   this.name = name;
+  console.log(`running from within RUNNER. name is: ${this.name}`);
 }
 
 function Rabbit(name, countLegs) {
   console.log(this instanceof Rabbit); // => true
+  console.log(`Within RABBIT function => this istanceof Rabbit: ${this instanceof Rabbit}`); // => true
   // Indirect invocation. Call parent constructor.
   Runner.call(this, name);
+  // Indirect invocation. Call parent constructor.
+  Runner(name); // still functions but is NOT an instancof Rabbit.
   this.countLegs = countLegs;
 }
 
