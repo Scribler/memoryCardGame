@@ -75,21 +75,43 @@ console.log("My Testing Area");
 console.log("***************************");
 
 
-function Runner(name) {
-  console.log(`Within RUNNER function => this istanceof Rabbit: ${this instanceof Rabbit}`); // => true
-  this.name = name;
-  console.log(`running from within RUNNER. name is: ${this.name}`);
+const numbers = {
+  array: [3, 5, 10],
+
+  getNumbers() {
+    console.log(this.array); // this is the object
+    return this.array;
+  }
 }
 
-function Rabbit(name, countLegs) {
-  console.log(this instanceof Rabbit); // => true
-  console.log(`Within RABBIT function => this istanceof Rabbit: ${this instanceof Rabbit}`); // => true
-  // Indirect invocation. Call parent constructor.
-  Runner.call(this, name);
-  // Indirect invocation. Call parent constructor.
-  Runner(name); // still functions but is NOT an instancof Rabbit.
-  this.countLegs = countLegs;
-}
 
-const myRabbit = new Rabbit('White Rabbit', 4);
-myRabbit;
+
+//
+// run functions / methods here
+//
+numbers.getNumbers(); // log the array
+
+const boundGetNumbers = numbers.getNumbers.bind(numbers);
+boundGetNumbers();
+const simpleGetNumbers = numbers.getNumbers();
+simpleGetNumbers;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
