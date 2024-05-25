@@ -61,7 +61,7 @@ function createGameBoard (numberOfCardPairs) {
 
 // Create's game board with given number of Cards
 // *** warning *** number of cards should be divisible by two.
-createGameBoard(3);
+createGameBoard(6);
 
 
 
@@ -74,98 +74,18 @@ console.log("***************************");
 console.log("My Testing Area");
 console.log("***************************");
 
-console.log("**");
-console.log("Adding Machine");
-console.log("**");
-const adder = {
-  addingMachine: function(){
-    console.log(`Added: ${this.numberA + this.numberB}`);
-  }
+
+function Runner(name) {
+  console.log(`Within runner function => this istanceof Rabbit: ${this instanceof Rabbit}`); // => true
+  this.name = name;
 }
 
-const numGroup2 = {
-  numberA: 22,
-  numberB: 33
+function Rabbit(name, countLegs) {
+  console.log(this instanceof Rabbit); // => true
+  // Indirect invocation. Call parent constructor.
+  Runner.call(this, name);
+  this.countLegs = countLegs;
 }
 
-const numbers = {
-  innerArray: ['inner1', 'inner2'],
-  numberA: 5,
-  numberB: 10,
-  sum: function() {
-    console.log(`"this === numbers" => ${this === numbers}`); // => true
-    // Using the arrow function before lets this equal numbers.  A regular function would make 'this'equal 'window'.
-    const calculate = () => {
-      console.log(`"this === numbers" => ${this === numbers}`); // => true
-    }
-    return calculate();
-  },
-};
-
-numbers.sum(); // => 15
-adder.addingMachine.call(numbers); // should be => 'Adding machine says: 15';
-adder.addingMachine.call(numGroup2); // should be => 'Adding machine says: 55';
-
-
-// Person Objects
-console.log("**");
-console.log("Person Objects");
-console.log("**");
-const PersonBuilder = function(firstName, lastName, age, job){
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.age = age;
-  this.job = job;
-}
-
-const manipulators = {
-  allInfo: function(){
-    return `${this.firstName} ${this.lastName} is ${this.age} years old and is a ${this.job}`;
-  },
-  fullName: function(){
-    return `Full Name: ${this.firstName} ${this.lastName}`;
-  },
-  firstName: function() {
-    return `First Name: ${this.firstName}`;
-  }
-}
-
-const person1 = new PersonBuilder('Dale', 'Anderson', 25, 'Brick Layer');
-const person2 = new PersonBuilder('Scott', 'Bergundy', 53, 'Roofer');
-const person3 = new PersonBuilder('Garret', 'Binns', 29, 'Engineer');
-const person4 = new PersonBuilder('Sammy', 'Shale', 32, 'Doctor');
-
-console.log(manipulators.firstName.call(person1));
-
-console.log("*******");
-
-// may 17 2024 start here building calc object from article
-const calc = {
-  num: 0,
-  increment() {
-    console.log(`"this === calc" ?: ${this === calc}`);
-    this.num += 1;
-    return this.num
-  }
-}
-
-console.log(calc.increment());
-console.log(calc.increment());
-console.log(calc.increment());
-console.log(calc.increment());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const myRabbit = new Rabbit('White Rabbit', 4);
+myRabbit;
