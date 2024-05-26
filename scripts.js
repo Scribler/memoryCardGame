@@ -74,33 +74,23 @@ console.log("***************************");
 console.log("My Testing Area");
 console.log("***************************");
 
+function Period (hours, minutes) {
+  this.hours = hours;
+  this.minutes = minutes;
+};
 
-const numbers = {
-  array: [3, 5, 10],
+Period.prototype.format = () => {
+  console.log(this ===window); // => true, because the arrow function's global context isn't changable
+  return this.hours + ' hours and ' + this.minutes + ' minutes';
+};
 
-  getNumbers() {
-    console.log(this.array); // this is the object
-    return this.array;
-  }
-}
+// Period.prototype.format = function() {
+//   console.log(this ===window); // => false, because the regular function's global context is changable
+//   return this.hours + ' hours and ' + this.minutes + ' minutes';
+// };
 
-
-
-//
-// run functions / methods here
-//
-numbers.getNumbers(); // log the array
-
-const boundGetNumbers = numbers.getNumbers.bind(numbers);
-boundGetNumbers();
-const simpleGetNumbers = numbers.getNumbers();
-simpleGetNumbers;
-
-
-
-
-
-
+const walkPeriod = new Period(2, 30);
+console.log(walkPeriod.format());
 
 
 
