@@ -92,6 +92,7 @@ Period.prototype.format = () => {
 const walkPeriod = new Period(2, 30);
 console.log(walkPeriod.format());
 
+// in conclusion when defining a method outside of the object you need to use a regular function NOT an arrow function.
 
 
 
