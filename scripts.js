@@ -32,4 +32,14 @@ console.log(library);
 
 // list out each book from the library's information.
 // display library books on screen
+// build a form for adding books instead of a prompt
+// form 
+//    - title field
+//    - author field
+//    - read/unread radio buttons
+//    - ADD BOOK button
+//    - 'Is this information correct?' modal to confirm ( yes / no ) buttons
+//          - initially just re-run get book with blank fields
+//          - eventually allows you to go back and correct input
+//
 
