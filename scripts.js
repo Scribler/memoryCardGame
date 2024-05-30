@@ -23,9 +23,6 @@ function getBookInfo() {
 // Testing
 //
 
-getBookInfo();
-getBookInfo();
-
 console.log(library);
 
 // To do
