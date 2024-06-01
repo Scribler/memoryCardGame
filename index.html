@@ -17,7 +17,25 @@
   <main>
 
     <section class="library">
-      <button class="addBook">Add Book</button>
+      <form class="newBookForm">
+        <label for="title">Title: </label>
+        <input type="text" id="title">
+
+        <label for="author">Author</label>
+        <input type="text" id="author">
+
+        <h3>Read?</h3>
+        <label for="yes">Yes</label>
+        <input type="radio" id="yes" name="read" value="yes">
+
+        <label for="no">No</label>
+        <input type="radio" id="no" name="read" value="no">
+
+
+        <button id="button_addBook" class="button">Add Book</button>
+      </form>
+
+
       <div id="bookshelf" class="bookshelf">
 
         <div class="book">
@@ -27,20 +45,20 @@
             <li class="read">Read</li>
           </ul>
         </div>
-        <div class="book">
-          <ul class="bookInfo">
-            <li class="title">Title 2</li>
-            <li class="author">Author 2</li>
-            <li class="read">Read</li>
-          </ul>
-        </div>
-        <div class="book">
-          <ul class="bookInfo">
-            <li class="title">Title 3</li>
-            <li class="author">Author 3</li>
-            <li class="read">Read</li>
-          </ul>
-        </div>
+        <!-- <div class="book"> -->
+        <!--   <ul class="bookInfo"> -->
+        <!--     <li class="title">Title 2</li> -->
+        <!--     <li class="author">Author 2</li> -->
+        <!--     <li class="read">Read</li> -->
+        <!--   </ul> -->
+        <!-- </div> -->
+        <!-- <div class="book"> -->
+        <!--   <ul class="bookInfo"> -->
+        <!--     <li class="title">Title 3</li> -->
+        <!--     <li class="author">Author 3</li> -->
+        <!--     <li class="read">Read</li> -->
+        <!--   </ul> -->
+        <!-- </div> -->
       </div>
     </section>
 

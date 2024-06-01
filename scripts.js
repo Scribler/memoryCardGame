@@ -20,10 +20,15 @@ function Book(title, author, read) { // book constructor
   book.appendChild(readText);
 }
 
-function addBookToLibrary(book) {library.push(book)};// add book to library
-function tempAddToPage(book) {bookshelf.appendChild(book)};// add book to library
+function addBookToLibrary(book) { // add book to library
+  library.push(book)
+};
 
-function getBookInfo() {//make new book and add to library uses prompts for user input
+function tempAddToPage(book) { // add book to library
+  bookshelf.appendChild(book)
+};
+
+function getBookInfo() { //make new book and add to library uses prompts for user input
   let title = prompt("What is the Title of the book?");
   let author = prompt("What is the Author of the book?");
   let read = prompt("Have you read the book?");
@@ -37,7 +42,7 @@ function getBookInfo() {//make new book and add to library uses prompts for user
 // Testing
 //
 
-getBookInfo();
+// getBookInfo();
 console.log(library);
 
 
