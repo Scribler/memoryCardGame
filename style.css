@@ -208,8 +208,11 @@ button:hover {
   padding: 5px;
   max-width: 200px;
 }
-
+label {
+  display: inline-block;
+}
 input {
+  display: inline-block;
   border: 2px solid black;
 }
 
