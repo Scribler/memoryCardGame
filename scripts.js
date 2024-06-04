@@ -7,11 +7,11 @@ const library = [];
 const bookshelf = document.getElementById("bookshelf");
 
 // Add new book object to library array
-const addBookButton = document.querySelector("#button_addBook");
-addBookButton.addEventListener('click', (event) => {
-  console.log(event);
-  getBookInfo();
-});
+// const addBookButton = document.querySelector("#button_addBook");
+// addBookButton.addEventListener('click', (event) => {
+//   console.log(event);
+//   getBookInfo();
+// });
 
 // Add all the books from the library array to the page.
 const fillLibraryButton = document.querySelector("#button_fillLibrary");
@@ -40,6 +40,9 @@ Functions
 
 function addBookToLibrary(bookObject) { // add book to library
   library.push(bookObject);
+  console.log(library[0].title);
+  console.log(library[0].author);
+  console.log(library[0].read);
 };
 
 function getBookInfo() { //make new book and add to library uses prompts for user input
@@ -54,6 +57,7 @@ function getBookInfo() { //make new book and add to library uses prompts for use
 // list library contents
 function showLibraryContents() {
   console.log("show Library Contents function running");
+  console.log(library);
   for (const book in library) {
     if (library.hasOwnProperty(book)) {
       const bookElement = library[book];
