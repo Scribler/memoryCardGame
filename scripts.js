@@ -17,7 +17,7 @@ const addBook = document.getElementById("button_addBook")
 addBook.addEventListener('click', getBookInfo);
 
 const fillLibraryButton = document.querySelector("#button_fillLibrary");
-fillLibraryButton.addEventListener('click', showLibraryContents);
+fillLibraryButton.addEventListener('click', fillTheShelves);
 
 /*
 Constructors
@@ -35,17 +35,17 @@ Functions
 
 function addBookToLibrary(bookObject) { // add book to library
   library.push(bookObject);
-  console.log(library[0].title);
-  console.log(library[0].author);
-  console.log(library[0].read);
 };
 
 function getBookInfo(event) { //make new book and add to library uses prompts for user input
-  const title = document.getElementById('title').value;
-  const author = document.getElementById('author').value;
-  const read = document.querySelector('input[name="read"]:checked').value;
-  const book = new Book(title, author, read);
+  const title = document.getElementById('title');
+  const author = document.getElementById('author');
+  const read = document.querySelector('input[name="read"]:checked');
+  const book = new Book(title.value, author.value, read.value);
   addBookToLibrary(book);
+  title.value = "";
+  author.value = "";
+  read.checked = false;
   event.preventDefault(); // this works, but stops the inputs from clearing after submission...
 }
 
@@ -67,6 +67,37 @@ function showLibraryContents() {
   }
 }
 
+function fillTheShelves() {
+  // clear shelf
+  bookshelf.innerHTML = '';
+  for (const key in library) {
+    if (library.hasOwnProperty(key)) {
+      const book = library[key];
+      // Title
+      const bookTitle = document.createElement('h3');
+      const bookTitleText = document.createTextNode(book.title);
+      bookTitle.appendChild(bookTitleText);
+      // Author
+      const bookAuthor = document.createElement('h3');
+      const bookAuthorText = document.createTextNode(book.author);
+      bookAuthor.appendChild(bookAuthorText);
+      // Read?
+      const bookRead = document.createElement('p');
+      const bookReadText = document.createTextNode(book.read);
+      bookRead.appendChild(bookReadText);
+      // Book Body
+      const bookDiv = document.createElement('div');
+      bookDiv.classList.add('book');
+      bookDiv.appendChild(bookTitle);
+      bookDiv.appendChild(bookAuthor);
+      bookDiv.appendChild(bookRead);
+      // Add to shelf
+      bookshelf.appendChild(bookDiv);
+      console.log("should have worked?");
+    }
+  }
+
+}
 
 
 /*
