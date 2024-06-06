@@ -85,6 +85,22 @@ function fillTheShelves() {
       const bookRead = document.createElement('p');
       const bookReadText = document.createTextNode(book.read);
       bookRead.appendChild(bookReadText);
+      // Remove Book
+      const removeBookButton = document.createElement('button');
+      removeBookButton.classList.add('removeBook');
+      // #1 need to make css for 'removeBook' class.
+
+
+      //
+      //
+      // remove book button needs to be finished
+      //
+      //
+
+
+
+
+
       // Book Body
       const bookDiv = document.createElement('div');
       bookDiv.classList.add('book');
