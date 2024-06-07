@@ -88,6 +88,8 @@ function fillTheShelves() {
       // Remove Book
       const removeBookButton = document.createElement('button');
       removeBookButton.classList.add('removeBook');
+      const removeBookText = document.createTextNode("Remove Book");
+      removeBookButton.appendChild(removeBookText);
       // #1 need to make css for 'removeBook' class.
 
 
