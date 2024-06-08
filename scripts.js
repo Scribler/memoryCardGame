@@ -75,32 +75,16 @@ function fillTheShelves() {
       const book = library[key];
       // Title
       const bookTitle = document.createElement('h3');
-      const bookTitleText = document.createTextNode(book.title);
-      bookTitle.appendChild(bookTitleText);
+      bookTitle.textContent = book.title;
       // Author
       const bookAuthor = document.createElement('h3');
-      const bookAuthorText = document.createTextNode(book.author);
-      bookAuthor.appendChild(bookAuthorText);
+      bookAuthor.textContent = book.author;
       // Read?
       const bookRead = document.createElement('p');
-      const bookReadText = document.createTextNode(book.read);
-      bookRead.appendChild(bookReadText);
+      bookRead.textContent = book.read;
       // Remove Book
       const removeBookButton = document.createElement('button');
-      removeBookButton.classList.add('removeBook');
-      const removeBookText = document.createTextNode("Remove Book");
-      removeBookButton.appendChild(removeBookText);
-      // #1 need to make css for 'removeBook' class.
-
-
-      //
-      //
-      // remove book button needs to be finished
-      //
-      //
-
-
-
+      removeBookButton.textContent = "Remove Book";
 
 
       // Book Body
@@ -109,6 +93,7 @@ function fillTheShelves() {
       bookDiv.appendChild(bookTitle);
       bookDiv.appendChild(bookAuthor);
       bookDiv.appendChild(bookRead);
+      bookDiv.appendChild(removeBookButton);
       // Add to shelf
       bookshelf.appendChild(bookDiv);
       console.log("should have worked?");
