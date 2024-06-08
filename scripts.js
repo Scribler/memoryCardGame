@@ -23,17 +23,20 @@ fillLibraryButton.addEventListener('click', fillTheShelves);
 Constructors
 */
 
-function Book(title, author, read) { // book constructor
+function Book(title, author, read, pages, arrLoc) { // book constructor
   this.title = title;
   this.author = author;
   this.read = read;
+  // this.pages = pages;
+  this.arrLoc = arrLoc;
 }
 
 /*
 Functions
 */
 
-function addBookToLibrary(bookObject) { // add book to library
+function addBookToLibrary(bookObject, bookLocation) { // add book to library
+  bookObject.arrLoc = bookLocation;
   library.push(bookObject);
 };
 
@@ -42,61 +45,69 @@ function getBookInfo(event) { //make new book and add to library uses prompts fo
   const author = document.getElementById('author');
   const read = document.querySelector('input[name="read"]:checked');
   const book = new Book(title.value, author.value, read.value);
-  addBookToLibrary(book);
+  addBookToLibrary(book, library.length);
   title.value = "";
   author.value = "";
   read.checked = false;
   event.preventDefault(); // this works, but stops the inputs from clearing after submission...
 }
 
-
-// list library contents
-function showLibraryContents() {
-  console.log("show Library Contents function running");
-  console.log(library);
-  console.log(library[0]);
-  console.log(library[1]);
-  for (const book in library) {
-    if (library.hasOwnProperty(book)) {
-      const bookElement = library[book];
-      console.log(`Book: ${bookElement.title}`);
-      console.log(`Author: ${bookElement.author}`);
-      console.log(`Read?: ${bookElement.read}`);
-      console.log("-------");
-    }
-  }
+function removeBook() {
+  console.log(`book array location?: ${this.arrLoc}`);
+  library.splice(this.arrLoc, 1);
+  fillTheShelves();
 }
+
 
 function fillTheShelves() {
   // clear shelf
   bookshelf.innerHTML = '';
   for (const key in library) {
     if (library.hasOwnProperty(key)) {
-      const book = library[key];
-      // Title
+      const book = library[key]; // book === individual book object
+     
+      //
+      // BOOK BODY
+      //
+      const bookDiv = document.createElement('div');
+      
+      //
+      // BOOK CONTENTS 
+      //
       const bookTitle = document.createElement('h3');
       bookTitle.textContent = book.title;
-      // Author
+     
       const bookAuthor = document.createElement('h3');
       bookAuthor.textContent = book.author;
-      // Read?
+     
       const bookRead = document.createElement('p');
       bookRead.textContent = book.read;
-      // Remove Book
+      
+      //
+      // SET LOCATION IN ARRAY
+      //
+      // bookDiv.setAttribute('data-arrLoc', key); // store array location in data attribute
+      // console.log(`${bookDiv}'s arrayLocation: ${bookDiv.getAttribute('data-arrLoc')}`);
+    
+      //
+      // REMOVE BOOK BUTTON
+      //
       const removeBookButton = document.createElement('button');
       removeBookButton.textContent = "Remove Book";
+      removeBookButton.addEventListener('click', removeBook.bind(book));
 
+     
+      
 
-      // Book Body
-      const bookDiv = document.createElement('div');
       bookDiv.classList.add('book');
+      
       bookDiv.appendChild(bookTitle);
       bookDiv.appendChild(bookAuthor);
       bookDiv.appendChild(bookRead);
       bookDiv.appendChild(removeBookButton);
       // Add to shelf
       bookshelf.appendChild(bookDiv);
-      console.log("should have worked?");
+      console.log(`Book Location: ${book.arrLoc}`);
     }
   }
 
