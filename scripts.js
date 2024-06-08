@@ -23,20 +23,19 @@ fillLibraryButton.addEventListener('click', fillTheShelves);
 Constructors
 */
 
-function Book(title, author, read, pages, arrLoc) { // book constructor
+function Book(title, author, read, pages) { // book constructor
   this.title = title;
   this.author = author;
   this.read = read;
   // this.pages = pages;
-  this.arrLoc = arrLoc;
+  this.arrLoc = "notSet";
 }
 
 /*
 Functions
 */
 
-function addBookToLibrary(bookObject, bookLocation) { // add book to library
-  bookObject.arrLoc = bookLocation;
+function addBookToLibrary(bookObject) { // add book to library
   library.push(bookObject);
 };
 
@@ -65,6 +64,7 @@ function fillTheShelves() {
   for (const key in library) {
     if (library.hasOwnProperty(key)) {
       const book = library[key]; // book === individual book object
+      book.arrLoc = key;
      
       //
       // BOOK BODY
