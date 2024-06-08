@@ -57,6 +57,15 @@ function removeBook() {
   fillTheShelves();
 }
 
+function readStatus() {
+  console.log(`this.read: ${this.read}`);
+  if(this.read === "yes") {
+    this.read = "no";
+  } else {
+    this.read = "yes";
+  }
+  fillTheShelves();
+}
 
 function fillTheShelves() {
   // clear shelf
@@ -84,17 +93,19 @@ function fillTheShelves() {
       bookRead.textContent = book.read;
       
       //
-      // SET LOCATION IN ARRAY
+      // CHANGE READ STATUS BUTTON
       //
-      // bookDiv.setAttribute('data-arrLoc', key); // store array location in data attribute
-      // console.log(`${bookDiv}'s arrayLocation: ${bookDiv.getAttribute('data-arrLoc')}`);
-    
+      const readStatusButton = document.createElement('button');
+      readStatusButton.textContent = "Read/Unread";
+      readStatusButton.addEventListener('click', readStatus.bind(book));
+      
       //
       // REMOVE BOOK BUTTON
       //
       const removeBookButton = document.createElement('button');
       removeBookButton.textContent = "Remove Book";
       removeBookButton.addEventListener('click', removeBook.bind(book));
+      
 
      
       
@@ -104,6 +115,7 @@ function fillTheShelves() {
       bookDiv.appendChild(bookTitle);
       bookDiv.appendChild(bookAuthor);
       bookDiv.appendChild(bookRead);
+      bookDiv.appendChild(readStatusButton);
       bookDiv.appendChild(removeBookButton);
       // Add to shelf
       bookshelf.appendChild(bookDiv);
