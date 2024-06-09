@@ -15,3 +15,22 @@ function makeAdding (firstNumber) {
 
 const add5 = makeAdding(5);
 console.log(add5(2));
+
+function makeFunc(firstName) {
+  const fname = firstName;
+  function fullName(secondName) {
+    const sname = secondName;
+    console.log(fname + " " + sname);
+  }
+  return fullName;
+}
+
+const myFunc = makeFunc("John");
+myFunc("Jacobs");
+
+
+function sizeChanger (size) {
+  return function() {
+    document.body.style.fontSize = size + 'px';
+  };
+}

@@ -164,26 +164,6 @@ li {
 }
 
 /* general styles */
-.library{
-  color: teal;
-  display: block;
-  background-color: #DADADA;
-  padding: 20px;
-}
-.bookshelf {
-  border: solid brown 3px;
-  min-height: 20em;
-  margin: 5px 0;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.book {
-  display: inline-block;
-  background-color: yellow;
-  padding: 1em;
-  margin: 5px;
-}
 
 button {
   cursor: pointer;
@@ -200,6 +180,8 @@ button {
   font-size: 16px;
   border-radius: .25rem;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  min-width: 6em;
+  margin: 5px;
 }
 button:hover {
   color: #fff;
