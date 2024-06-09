@@ -1,21 +1,17 @@
 // Factory Functions
 
-let globalAge  = 23; // Globally scoped variable
-
-function printAge (age) {
-  var varAge = 34; // Function scoped variable
-
-  // this is another 'curly brace', thus a block
-  if (age > 0) {
-    // This is a block-scoped variable that exists
-    // within its nearest enclosing block, the if's block
-    const constAge = age * 2;
-    console.log(constAge);
+function makeAdding (firstNumber) {
+  // "first" is scoped within the makeAdding function
+  const first = firstNumber;
+  return function resulting (secondNumber) {
+    // "second" is scoped within the resulting function
+    const second = secondNumber;
+    return first + second;
   }
-
-  // ERROR! We tried to access a block scoped variable
-  // not within its scope
-  console.log(constAge);
 }
+// but we've not seen an example of a "function"
+// being returned, thus far = how do we use it?
 
-printAge(globalAge);
+
+const add5 = makeAdding(5);
+console.log(add5(2));
