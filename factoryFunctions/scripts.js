@@ -1,36 +1,14 @@
 // Factory Functions
-
-function makeAdding (firstNumber) {
-  // "first" is scoped within the makeAdding function
-  const first = firstNumber;
-  return function resulting (secondNumber) {
-    // "second" is scoped within the resulting function
-    const second = secondNumber;
-    return first + second;
-  }
-}
-// but we've not seen an example of a "function"
-// being returned, thus far = how do we use it?
-
-
-const add5 = makeAdding(5);
-console.log(add5(2));
-
-function makeFunc(firstName) {
-  const fname = firstName;
-  function fullName(secondName) {
-    const sname = secondName;
-    console.log(fname + " " + sname);
-  }
-  return fullName;
-}
-
-const myFunc = makeFunc("John");
-myFunc("Jacobs");
-
-
 function sizeChanger (size) {
   return function() {
     document.body.style.fontSize = size + 'px';
   };
 }
+
+const size12 = sizeChanger(12);
+const size14 = sizeChanger(14);
+const size16 = sizeChanger(16);
+
+document.getElementById("size-12").onclick = size12;
+document.getElementById("size-14").onclick = size14;
+document.getElementById("size-16").onclick = size16;
