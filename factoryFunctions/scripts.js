@@ -27,13 +27,10 @@ document.getElementById("size-16-plus").onclick = size16.bind(sizeChanger, 6);
 // Factory Function Shorthand and other formats
 //
 
-const name = "Bob";
-const age = 28;
-const color = "red";
+// const a = "a a";
+// const b = "b b";
+// const c = "c c";
 
-// The two variable assignments do the same thing as long as the name is the same as the assignment name.
-const thatObject = { name: name, age: age, color: color }; // old
-const nowFancyObject = {name, age, color}; // new
+const obj = {a: 1, b: {c: 2}};
 
-console.log(thatObject);
-console.log(nowFancyObject);
+console.log(obj.b.c);
