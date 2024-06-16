@@ -27,26 +27,7 @@ document.getElementById("size-16-plus").onclick = size16.bind(sizeChanger, 6);
 // Factory Function Shorthand and other formats
 //
 
-const bArray = [];
-const bObj = { a: 1, b: 2};
+const [a, b, ...{ length }] = [1, 2, 3, 4, 5, 6];
 
-({ a: bArray[0], b: bArray[1]} = bObj); // assigns 1, and 2, to positions 0, and 1, 
-                                        //respectively in 'bArray'
-                                        // *NOTE* MUST have () surrounding the statement
-
-console.log(bArray); // = [1, 2]
-
-const [aa = 1, bb = 0] = [2]; // assigns aa = 2, bb = 0
-                              // first array contains variable name and default value for it if none given in the second half of the declaration.
-
-console.log(aa, bb); // = 2 0
-
-const { cc = console.log("default value")} = { cc: undefined}; // if 'cc' has a value other than undefined it will console.log
-
-const ccc = [1, 2, 3, 4, 5, 6];
-
-const [a, b, ...c] = ccc;
-
-console.log(`a: ${a}`);
-console.log(`b: ${b}`);
-console.log(`c: ${c}`);
+console.log(a, b, length);
+console.log("test");
