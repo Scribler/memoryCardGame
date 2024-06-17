@@ -30,4 +30,16 @@ document.getElementById("size-16-plus").onclick = size16.bind(sizeChanger, 6);
 const [a, b, ...{ length }] = [1, 2, 3, 4, 5, 6];
 
 console.log(a, b, length);
-console.log("test");
+
+// RegEx
+
+// Groups
+const imageDescription = 'This image has a resolution of 1440x900.';
+const regexpSize = /([0-9]+)x([0-9]+)/;
+const match = imageDescription.match(regexpSize);
+console.log(`width: ${match[1]} / Height: ${match[2]}.`); // number in 
+
+// Backreferences
+
+
+
