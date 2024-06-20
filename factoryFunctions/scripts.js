@@ -32,7 +32,13 @@ const obj = { a: 1, b: 2 };
 console.log({a: numbers[0], b: numbers[1]} = obj);
 console.log(numbers);
 
+const foo = ["one", "two"];
 
+const [red, blue, green] = foo;
+
+console.log(red);
+console.log(blue);
+console.log(green);
 
 
 
