@@ -11,3 +11,6 @@
 
 # temp files?
 *.temp
+
+# Notes Files
+*.org

@@ -27,23 +27,39 @@ document.getElementById("size-16-plus").onclick = size16.bind(sizeChanger, 6);
 // Factory Function Shorthand and other formats
 //
 
-const numbers = [];
-const obj = { a: 1, b: 2 };
-console.log({a: numbers[0], b: numbers[1]} = obj);
-console.log(numbers);
+function parseProtocol(url){
+  // const parsedURL = /^(\w+):\/\/([^/]+)\/(.*)$/.exec(url);
+  const parsedURL = /(\w+)/.exec(url);
+  console.log(parsedURL);
+  if (!parsedURL) {
+    return false;
+  }
+  console.log(parsedURL);
+  // ["https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+  // "https", "developer.mozilla.org", "en-US/docs/Web/JavaScript"]
 
-const foo = ["one", "two"];
+  const [fullURL, protocol, fullhost, fullpath] = parsedURL;
+  console.log(`fullURL: ${fullURL}`);
+  console.log(`protocol: ${protocol}`);
+  console.log(`fullhost: ${fullhost}`);
+  console.log(`fullpath: ${fullpath}`);
 
-const [red, blue, green] = foo;
+  return protocol;
 
-console.log(red);
-console.log(blue);
-console.log(green);
-console.log("test");
+}
 
-const [a, b, ...[c, d, ...[e, ...f]]] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-console.log(a, b, c, d, e, f);
+console.log("...");
+console.log("...");
+console.log("...");
 
 
+console.log(
+  parseProtocol("https://developer.mozilla.org/en-US/docs/Web/JavaScript"),
+);
+// "https"
 
+console.log("...");
+console.log("...");
+console.log("...");
+console.log("...");
 
