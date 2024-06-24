@@ -84,3 +84,6 @@ const user = {
 //
 // user name display start
 //
+
+
+// start working on Japanese flashcards game?
