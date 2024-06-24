@@ -27,14 +27,9 @@ document.getElementById("size-16-plus").onclick = size16.bind(sizeChanger, 6);
 // Factory Function Shorthand and other formats
 //
 
-const user = {
-  id: 42,
-  displayName: "jdoe",
-  fullName: {
-    firstName: "Jane",
-    lastName: "Doe",
-  },
-};
+//
+// mini game start
+//
 
 function player(name) {
   this.name = name;
@@ -56,7 +51,7 @@ function attackPlayer(player) { // reduce player health by 10
   return player.health
 }
 
-function drinkHealthPotion(player) {
+function drinkHealthPotion(player) { // increase health by 10
   player.health += 10;
   return player.health;
 }
@@ -69,4 +64,23 @@ console.log(`Player has been attacked. Health is now: ${attackPlayer(john)}`);
 console.log(`Player drinks health potion. Health is now: ${drinkHealthPotion(john)}`);
 console.log(`Player drinks health potion. Health is now: ${drinkHealthPotion(john)}`);
 
+//
+// mini game end
+//
 
+//
+// user name display start
+//
+
+const user = {
+  id: 42,
+  displayName: "jdoe",
+  fullName: {
+    firstName: "Jane",
+    lastName: "Doe",
+  },
+};
+
+//
+// user name display start
+//
