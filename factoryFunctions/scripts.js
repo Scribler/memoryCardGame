@@ -27,51 +27,46 @@ document.getElementById("size-16-plus").onclick = size16.bind(sizeChanger, 6);
 // Factory Function Shorthand and other formats
 //
 
-function parseProtocol(url){
-  // const parsedURL = /^(\w+):\/\/([^/]+)\/(.*)$/.exec(url);
-  const parsedURL = /(\w+):\/\/([^/]+)\/(.*)/.exec(url);
-  console.log(`parsedURL: ${parsedURL}`);
-  if (!parsedURL) {
-    return false;
-  }
-  console.log(parsedURL);
-  // ["https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-  // "https", "developer.mozilla.org", "en-US/docs/Web/JavaScript"]
+const user = {
+  id: 42,
+  displayName: "jdoe",
+  fullName: {
+    firstName: "Jane",
+    lastName: "Doe",
+  },
+};
 
-  const [fullURL, protocol, fullhost, fullpath] = parsedURL;
-  console.log(`fullURL: ${fullURL}`);
-  console.log(`protocol: ${protocol}`);
-  console.log(`fullhost: ${fullhost}`);
-  console.log(`fullpath: ${fullpath}`);
-
-  return protocol;
-
+function player(name) {
+  this.name = name;
+  const health = 100;
+  return { name, health };
 }
 
-console.log("...");
-console.log("...");
-console.log("...");
+const john = player("John"); // Initialize player "John"
 
-
-console.log(
-  parseProtocol("https://developer.mozilla.org/en-US/docs/Web/JavaScript"),
-);
-// "https"
-
-console.log("...");
-console.log("...");
-console.log("...");
-console.log("...");
-
-function myParser(stuffToParse) {
-  const parsedStuff = /(\w+)\.(\w+)/.exec(stuffToParse);
-  const [ capturedText, first, second, third, forth ] = parsedStuff;
-  console.log(`Captured Text: ${capturedText}`);
-  console.log(`first: ${first}`);
-  console.log(`second: ${second}`);
-  console.log(`third: ${third}`);
-  console.log(`fourth: ${forth}`);
+function returnPlayerHealth({health}) { // return player health
+  return health;
+};
+function returnPlayerName({name}) { // return player name
+  return name;
 }
 
+function attackPlayer(player) { // reduce player health by 10
+  player.health -= 10;
+  return player.health
+}
 
-myParser("test1.test2/test3//test4");
+function drinkHealthPotion(player) {
+  player.health += 10;
+  return player.health;
+}
+
+// run commands
+console.log(`Player ${returnPlayerName(john)}s health: ${returnPlayerHealth(john)}`);
+console.log(`Player has been attacked. Health is now: ${attackPlayer(john)}`);
+console.log(`Player has been attacked. Health is now: ${attackPlayer(john)}`);
+console.log(`Player has been attacked. Health is now: ${attackPlayer(john)}`);
+console.log(`Player drinks health potion. Health is now: ${drinkHealthPotion(john)}`);
+console.log(`Player drinks health potion. Health is now: ${drinkHealthPotion(john)}`);
+
+
