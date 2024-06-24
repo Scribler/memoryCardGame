@@ -29,8 +29,8 @@ document.getElementById("size-16-plus").onclick = size16.bind(sizeChanger, 6);
 
 function parseProtocol(url){
   // const parsedURL = /^(\w+):\/\/([^/]+)\/(.*)$/.exec(url);
-  const parsedURL = /(\w+)/.exec(url);
-  console.log(parsedURL);
+  const parsedURL = /(\w+):\/\/([^/]+)\/(.*)/.exec(url);
+  console.log(`parsedURL: ${parsedURL}`);
   if (!parsedURL) {
     return false;
   }
@@ -63,3 +63,15 @@ console.log("...");
 console.log("...");
 console.log("...");
 
+function myParser(stuffToParse) {
+  const parsedStuff = /(\w+)\.(\w+)/.exec(stuffToParse);
+  const [ capturedText, first, second, third, forth ] = parsedStuff;
+  console.log(`Captured Text: ${capturedText}`);
+  console.log(`first: ${first}`);
+  console.log(`second: ${second}`);
+  console.log(`third: ${third}`);
+  console.log(`fourth: ${forth}`);
+}
+
+
+myParser("test1.test2/test3//test4");
