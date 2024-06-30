@@ -164,3 +164,17 @@ for (const {
   } of people) {
   console.log(`Name: ${n}, Father: ${f}`);
 };
+
+const { a, toFixed } = 1;
+console.log(a, toFixed);
+
+const props = [
+  { id: 1, name: "Fizz" },
+  { id: 2, name: "Buzz" },
+  { id: 3, name: "FizzBuzz" },
+];
+
+const [,{ name },] = props;
+
+console.log(name)
+console.log(props[2].name)
