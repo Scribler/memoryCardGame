@@ -112,3 +112,55 @@ drawChart({
   coords: {x: 22, y: 33},
   radius: 66,
 });
+
+const metadata = {
+  title: "scratchpad",
+  translations: [
+    {
+      locale: "de",
+      localizationTags: [],
+      lastEdit: "2014-04-14T08:43:37",
+      url: "/de/docs/Tools/Scratchpad",
+      title: "JavaScript-Umgebung",
+    },
+  ],
+  url: "/en-US/docs/Tools/Scratchpad",
+};
+
+const {
+  title: englishTitle, // rename
+  translations: [
+    {
+      title: localeTitle, // rename
+    },
+  ],
+} = metadata; // this makes the above an assignment (renaming englishtitle and localtitle)
+
+console.log(englishTitle); // "scratchpad"
+console.log(localeTitle); // "JavaScript-Umgebung"
+
+const people = [
+  {
+    name: "Mike Smith",
+    family: {
+      mother: "mary",
+      father: "Harry Smith"
+    },
+    age: 35,
+  },
+  {
+    name: "Tom Jones",
+    family: {
+      mother: "Norah Jones",
+      father: "Richard Jones",
+    },
+    age: 44,
+  },
+];
+
+for (const {
+  name: n, 
+  family: {father: f},
+  } of people) {
+  console.log(`Name: ${n}, Father: ${f}`);
+};
