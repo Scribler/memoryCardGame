@@ -82,8 +82,33 @@ const user = {
 };
 
 //
-// user name display start
+// user name display end
 //
 
+function userNameDisplay({displayName: dname}) {
+  return dname;
+}
 
-// start working on Japanese flashcards game?
+function whois({ displayName, fullName: {firstName: name}}) {
+  return `${displayName} is ${name}`;
+}
+console.log(userNameDisplay(user));
+console.log(whois(user));
+
+function drawChart({
+  size = "big",
+  coords = { x: 0, y: 0},
+  radius = 25
+  }) {
+  console.log(size, coords, radius);
+}
+
+drawChart({
+  size: "extraLG",
+  radius: 44,
+});
+drawChart({});
+drawChart({
+  coords: {x: 22, y: 33},
+  radius: 66,
+});
