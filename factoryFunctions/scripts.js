@@ -54,8 +54,19 @@ function createPlayer(name,level){
 }
 
 const josh = createPlayer("josh");
-josh.giveReputation;
-josh.giveReputation;
+josh.giveReputation();
+josh.giveReputation();
 console.log(josh.getReputation());
+
+const calculator = (function(){
+  const add = (a,b) => a + b;
+  const subtract = (a,b) => a - b;
+  const multiply = (a,b) => a * b;
+  const divide = (a,b) => a / b;
+  return {add, subtract, multiply, divide};
+})();
+
+console.log(calculator.add(1,1));
+console.log(calculator.multiply(3,3));
 
 
