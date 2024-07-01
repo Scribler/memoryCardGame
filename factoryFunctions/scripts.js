@@ -71,16 +71,40 @@ const calculator = (function(){
 console.log(calculator.add(1,1));
 console.log(calculator.mul(3,3));
 
-function outerVar() {
-  const outVar = "I am the outer variable";
-  function innerVar() {
-    const inVar = "I am the inner variable";
-    console.log(outVar);
-    console.log(inVar);
+//
+// Calculator END
+//
+
+//
+// Closures START
+//
+function newGreeting (greeting=""){ // takes variable on initialization
+  const myGreeting = greeting.toUpperCase();
+  function greet(name){ // takes variable on post instatiation useage
+    console.log(`${myGreeting} ${name}.`);
   }
-  return innerVar();
+  return greet;
 }
 
-const mynewOuterVar = outerVar();
+const hello = newGreeting("Hello");
+const howdy = newGreeting("Howdy doody,");
 
-mynewOuterVar();
+hello("John");
+howdy("Samuel");
+
+function createGame (gameType) {
+  let score = 0;
+  return function win() {
+    console.log(`You won the ${gameType} game! Your score is: ${++score}`);
+  }
+}
+
+const hockeyGame = createGame("Hockey");
+hockeyGame();
+hockeyGame();
+hockeyGame();
+hockeyGame();
+
+//
+// Closures END
+//
