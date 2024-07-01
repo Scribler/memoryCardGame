@@ -38,11 +38,24 @@ function createUser (name) {
   return { name, discordName, getReputation, giveReputation };
 }
 
-const josh = createUser("josh");
-josh.giveReputation;
-josh.giveReputation;
+// basic way
+// function createPlayer(name,level){
+//   const {getReputation,giveReputation} = createUser(name);
+//   const increaseLevel = () => level++;
+//   return {name,getReputation,giveReputation,increaseLevel};
+// }
 
-console.log({ // logs { discordName: "@josh", reputation: 2 }
-  discordName: josh.discordName,
-  reputation: josh.getReputation(),
-}); 
+// Object.assign way
+function createPlayer(name,level){
+  const user = createUser(name);
+  
+  const increaseLevel = () => level++;
+  return Object.assign({}, user, {increaseLevel});
+}
+
+const josh = createPlayer("josh");
+josh.giveReputation;
+josh.giveReputation;
+console.log(josh.getReputation());
+
+
