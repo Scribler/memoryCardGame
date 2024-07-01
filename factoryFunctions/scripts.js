@@ -58,13 +58,15 @@ josh.giveReputation();
 josh.giveReputation();
 console.log(josh.getReputation());
 
-const calculator = (function(){
+const calculator = (function(){ 
   const add = (a,b) => a + b;
   const subtract = (a,b) => a - b;
   const multiply = (a,b) => a * b;
   const divide = (a,b) => a / b;
   return {add, subtract, multiply, divide};
-})();
+})(); // '()' at the end of the '()' wrapped function calls it immediately
+      // This allows you to immediately use it's functions without seperately
+      // instantiating it. COOL!
 
 console.log(calculator.add(1,1));
 console.log(calculator.multiply(3,3));
