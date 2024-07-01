@@ -71,4 +71,16 @@ const calculator = (function(){
 console.log(calculator.add(1,1));
 console.log(calculator.mul(3,3));
 
+function outerVar() {
+  const outVar = "I am the outer variable";
+  function innerVar() {
+    const inVar = "I am the inner variable";
+    console.log(outVar);
+    console.log(inVar);
+  }
+  return innerVar();
+}
 
+const mynewOuterVar = outerVar();
+
+mynewOuterVar();
