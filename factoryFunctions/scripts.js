@@ -1,4 +1,5 @@
 // Factory Functions
+const start = Date.now();
 
 function sizeChanger (size) {
   return function addNum(sizeModifier=0) {
@@ -92,10 +93,11 @@ const howdy = newGreeting("Howdy doody,");
 hello("John");
 howdy("Samuel");
 
-function createGame (gameType) {
+function createGame (gameType) { // doesn't have to be stored in a variable to be accessed by the next function.
   let score = 0;
   return function win() {
-    console.log(`You won the ${gameType} game! Your score is: ${++score}`);
+    score++;
+    console.log(`You won the ${gameType} game! Your score is: ${score}`);
   }
 }
 
@@ -108,3 +110,37 @@ hockeyGame();
 //
 // Closures END
 //
+
+// Modules START 
+//
+const Formatter = (function(message){
+  const log = (message) => console.log(`[${Date.now()}] logger: ${message}`);
+  const timesRun = [];
+
+  const makeUpperCase = (text) => {
+    log("Making Uppercase");
+    timesRun.push(null);
+    return text.toUpperCase();
+  };
+
+  const writeToDom = (target, type, text) => {
+    const element = document.createElement(type);
+    element.innerText = text;
+    document.querySelector(target).appendChild(element);
+  };
+
+  return {
+    makeUpperCase,
+    timesRun,
+    writeToDom,
+  };
+})();
+
+console.log(Formatter.makeUpperCase("Upper case Words"));
+console.log(Formatter.makeUpperCase("Upper case Words"));
+console.log(Formatter.makeUpperCase("Upper case Words"));
+console.log(`makeUpperCase > times run: ${Formatter.timesRun.length}`);
+Formatter.writeToDom("#modulesContent", "h1", "This is an H1?");
+Formatter.writeToDom("#modulesContent", "h3", "This is an H3?");
+Formatter.writeToDom("#modulesContent", "p", "This is a paragraph?");
+
