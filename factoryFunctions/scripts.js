@@ -114,20 +114,31 @@ const calculator = (function(){
 
 // Modules START 
 //
-const Formatter = (function(message){
-  const log = (message) => console.log(`[${Date.now()}] logger: ${message}`);
+
+//documentMock
+const documentMock = (() => ({
+  querySelector: (target) => ({
+    innerHTML: null,
+    appendChild: (element) => ({
+      innerHTML: null,
+    }),
+  }),
+}))();
+
+const Formatter = (function(doc){
+  const log = (message) => console.log(`[${Date.now()}] logger: ${message}`); // log time and a given message
   const timesRun = [];
 
-  const makeUpperCase = (text) => {
+  const makeUpperCase = (text) => { // make given text uppercase.
     log("Making Uppercase");
     timesRun.push(null);
     return text.toUpperCase();
   };
 
-  const writeToDom = (target, type, text) => {
+  const writeToDom = (target, type, text) => { // put text in targeted dom element
     const element = document.createElement(type);
     element.innerText = text;
-    document.querySelector(target).appendChild(element);
+    doc.querySelector(target).appendChild(element);
   };
 
   return {
@@ -135,7 +146,8 @@ const Formatter = (function(message){
     timesRun,
     writeToDom,
   };
-})();
+})(document || documentMock);
+
 console.log(Formatter.makeUpperCase("Upper case Words"));
 console.log(`makeUpperCase > times run: ${Formatter.timesRun.length}`);
 Formatter.writeToDom("#modulesContent", "h1", "This is an H1?");
