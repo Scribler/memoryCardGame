@@ -57,7 +57,7 @@ function createPlayer(name,level){
 const josh = createPlayer("josh");
 josh.giveReputation();
 josh.giveReputation();
-console.log(josh.getReputation());
+// console.log(josh.getReputation());
 
 const calculator = (function(){ 
   const add = (a,b) => a + b;
@@ -69,8 +69,8 @@ const calculator = (function(){
       // This allows you to immediately use it's functions without seperately
       // instantiating it. COOL!
 
-console.log(calculator.add(1,1));
-console.log(calculator.mul(3,3));
+// console.log(calculator.add(1,1));
+// console.log(calculator.mul(3,3));
 
 //
 // Calculator END
@@ -79,33 +79,34 @@ console.log(calculator.mul(3,3));
 //
 // Closures START
 //
-function newGreeting (greeting=""){ // takes variable on initialization
-  const myGreeting = greeting.toUpperCase();
-  function greet(name){ // takes variable on post instatiation useage
-    console.log(`${myGreeting} ${name}.`);
-  }
-  return greet;
-}
 
-const hello = newGreeting("Hello");
-const howdy = newGreeting("Howdy doody,");
-
-hello("John");
-howdy("Samuel");
-
-function createGame (gameType) { // doesn't have to be stored in a variable to be accessed by the next function.
-  let score = 0;
-  return function win() {
-    score++;
-    console.log(`You won the ${gameType} game! Your score is: ${score}`);
-  }
-}
-
-const hockeyGame = createGame("Hockey");
-hockeyGame();
-hockeyGame();
-hockeyGame();
-hockeyGame();
+// function newGreeting (greeting=""){ // takes variable on initialization
+//   const myGreeting = greeting.toUpperCase();
+//   function greet(name){ // takes variable on post instatiation useage
+//     console.log(`${myGreeting} ${name}.`);
+//   }
+//   return greet;
+// }
+//
+// const hello = newGreeting("Hello");
+// const howdy = newGreeting("Howdy doody,");
+//
+// hello("John");
+// howdy("Samuel");
+//
+// function createGame (gameType) { // doesn't have to be stored in a variable to be accessed by the next function.
+//   let score = 0;
+//   return function win() {
+//     score++;
+//     console.log(`You won the ${gameType} game! Your score is: ${score}`);
+//   }
+// }
+//
+// const hockeyGame = createGame("Hockey");
+// hockeyGame();
+// hockeyGame();
+// hockeyGame();
+// hockeyGame();
 
 //
 // Closures END
@@ -135,12 +136,7 @@ const Formatter = (function(message){
     writeToDom,
   };
 })();
-
-console.log(Formatter.makeUpperCase("Upper case Words"));
-console.log(Formatter.makeUpperCase("Upper case Words"));
 console.log(Formatter.makeUpperCase("Upper case Words"));
 console.log(`makeUpperCase > times run: ${Formatter.timesRun.length}`);
 Formatter.writeToDom("#modulesContent", "h1", "This is an H1?");
-Formatter.writeToDom("#modulesContent", "h3", "This is an H3?");
-Formatter.writeToDom("#modulesContent", "p", "This is a paragraph?");
 
